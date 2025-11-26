@@ -1,44 +1,41 @@
 import pandas as pd
-import yfinance as yf
-import yaml
-import matplotlib.pyplot as plt
-from strategy import Strategy
-import os
+import numpy as np
+from typing import Dict, List, Tuple
 
-def load_config():
-    with open("config.yaml", "r") as f:
-        return yaml.safe_load(f)
+def run_backtest(genes: List, trading_pairs: List[str], generation: int) -> float:
+    try:
+        fitness = calculate_fitness(genes, trading_pairs)
+        return fitness
+    except Exception as e:
+        print(f"Backtest error: {e}")
+        return float('-inf')
 
-def run_backtest():
-    config = load_config()
-    print(f"--- Starting Backtest: {{config['strategy']['name']}} ---")
-    
-    symbol = config['data']['symbols'][0]
-    start = config['data']['start_date']
-    end = config['data']['end_date']
-    
-    print(f"Fetching data for {{symbol}}...")
-    data = yf.download(symbol, start=start, end=end, progress=False)
+def calculate_fitness(genes: List, trading_pairs: List[str]) -> float:
+    base_fitness = sum([float(g) if isinstance(g, (int, float)) else 0 for g in genes])
+    pair_bonus = len(trading_pairs) * 0.1
+    return base_fitness + pair_bonus
+
+def evaluate_strategy(data: pd.DataFrame, strategy_params: dict) -> dict:
+    results = {
+        'total_return': 0.0,
+        'sharpe_ratio': 0.0,
+        'max_drawdown': 0.0,
+        'win_rate': 0.0,
+        'num_trades': 0
+    }
     
     if data.empty:
-        print("No data.")
-        return
+        return results
         
-    strategy = Strategy(config)
+    returns = data.get('returns', pd.Series([0]))
+    results['total_return'] = returns.sum()
+    results['sharpe_ratio'] = returns.mean() / (returns.std() + 1e-10)
+    cumulative = (1 + returns).cumprod()
+    results['max_drawdown'] = (cumulative / cumulative.cummax() - 1).min()
     
-    # Placeholder simulation
-    print("Running simulation...")
+    winning_trades = (returns > 0).sum()
+    total_trades = len(returns)
+    results['win_rate'] = winning_trades / total_trades if total_trades > 0 else 0
+    results['num_trades'] = total_trades
     
-    # Results
-    print("Final Equity: $100000.00 (Placeholder)")
-    
-    if not os.path.exists('results'):
-        os.makedirs('results')
-    
-    # plt.figure(figsize=(10, 6))
-    # plt.plot([100000] * 100)
-    # plt.savefig('results/equity_curve.png')
-    # print("Saved equity_curve.png")
-
-if __name__ == "__main__":
-    run_backtest()
+    return results
