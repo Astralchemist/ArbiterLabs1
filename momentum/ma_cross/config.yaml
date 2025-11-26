@@ -1,0 +1,29 @@
+parameters:
+  short_window: 20
+  long_window: 60
+  symbol: 'SPY'
+
+backtest:
+  start_date: '2015-01-01'
+  end_date: '2023-12-31'
+  initial_capital: 100000
+
+data:
+  interval: '1d'
+  lookback_days: 100
+
+risk:
+  max_position_size: 1.0
+  use_stop_loss: false
+  stop_loss_pct: 0.05
+  
+execution:
+  slippage: 0.001
+  commission: 0.005
+  min_trade_cost: 1.0
+
+reporting:
+  save_trades: true
+  save_equity_curve: true
+  plot_results: true
+  plot_indicators: true

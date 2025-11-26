@@ -1,0 +1,37 @@
+parameters:
+  short_vol_stop_pct: 0.25
+  long_vol_stop_pct: 0.01
+  long_vol_target_pct: 0.50
+  vol_allocation: 0.20
+  hedge_allocation: 0.80
+  rsi_period: 2
+  rsi_long_period: 5
+  panic_drawdown_pct: 0.10
+
+symbols:
+  short_volatility: 'SVXY'
+  long_volatility: 'VXX'
+  hedge: 'IEI'
+  benchmark: 'SPY'
+
+backtest:
+  start_date: '2015-01-01'
+  end_date: '2023-12-31'
+  initial_capital: 100000
+  
+data:
+  interval: '1h'
+  lookback_days: 400
+
+risk:
+  max_position_size: 0.20
+  max_leverage: 1.0
+  
+execution:
+  slippage: 0.01
+  commission: 0.005
+
+reporting:
+  save_trades: true
+  save_equity_curve: true
+  plot_results: true

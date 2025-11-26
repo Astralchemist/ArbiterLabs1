@@ -1,0 +1,24 @@
+# Strategy Configuration
+strategy:
+  name: "moving_average_crossover"
+  version: "1.0.0"
+
+# Trading Parameters
+parameters:
+  lookback: 20
+  threshold: 2.0
+  leverage: 1.0
+
+# Data Configuration
+data:
+  symbols: ["SPY"]
+  timeframe: "1d"
+  start_date: "2020-01-01"
+  end_date: "2023-12-31"
+  data_source: "yfinance"
+
+# Execution
+execution:
+  broker: "paper"
+  slippage_bps: 5
+  commission_bps: 10

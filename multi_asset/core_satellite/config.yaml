@@ -1,0 +1,51 @@
+parameters:
+  core_weight: 0.25
+  satellite_weight: 0.75
+  ma_fast: 20
+  ma_slow: 200
+  leverage: 1.0
+
+symbols:
+  core:
+    - 'QQQ'
+    - 'XLP'
+    - 'TLT'
+    - 'IEF'
+  satellite:
+    - 'XLV'
+    - 'XLY'
+    - 'TLT'
+    - 'GLD'
+  benchmark: 'SPY'
+
+weights:
+  core:
+    - 0.25
+    - 0.25
+    - 0.25
+    - 0.25
+
+backtest:
+  start_date: '2010-01-01'
+  end_date: '2023-12-31'
+  initial_capital: 100000
+  rebalance_frequency: 'weekly'
+  rebalance_day: 0
+
+data:
+  interval: '1d'
+  lookback_days: 250
+
+risk:
+  max_position_size: 0.25
+  max_leverage: 1.0
+  
+execution:
+  slippage: 0.001
+  commission: 0.005
+  min_trade_cost: 1.0
+
+reporting:
+  save_trades: true
+  save_equity_curve: true
+  plot_results: true

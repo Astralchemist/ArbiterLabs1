@@ -1,0 +1,19 @@
+# Base dependencies for all strategies
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+pyyaml>=6.0
+python-dateutil>=2.8.0
+
+# Data sources
+yfinance>=0.2.0
+
+# Testing
+pytest>=7.3.0
+pytest-cov>=4.1.0
+
+# Utilities
+tqdm>=4.65.0
+requests>=2.31.0

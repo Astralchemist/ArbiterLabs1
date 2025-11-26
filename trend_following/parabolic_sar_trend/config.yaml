@@ -1,0 +1,32 @@
+strategy:
+  name: "parabolic_sar"
+  version: "1.0.0"
+  category: "trend_following"
+
+parameters:
+  acceleration_factor: 0.02
+  max_acceleration: 0.20
+  initial_af: 0.02
+  af_increment: 0.02
+
+risk:
+  max_position_size: 1.0
+  stop_loss_pct: 0.05
+  take_profit_pct: 0.10
+
+data:
+  symbols: ["SPY"]
+  timeframe: "1d"
+  start_date: "2018-01-01"
+  end_date: "2024-01-01"
+  data_source: "yfinance"
+
+execution:
+  broker: "paper"
+  slippage_bps: 5
+  commission_bps: 10
+
+logging:
+  level: "INFO"
+  save_trades: true
+  save_equity_curve: true

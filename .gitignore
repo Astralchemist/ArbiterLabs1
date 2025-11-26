@@ -1,24 +1,82 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-node_modules
-dist
-dist-ssr
-*.local
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
+# Claude Code
+.claude/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Data files
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.db
+*.sqlite
+
+# Results
+results/
+output/
+logs/
+*.log
+
+# API keys and secrets
+.env
+.env.local
+credentials.json
+secrets.yaml
+config.local.yaml
+*_secret.yaml
+
+# Backtest outputs
+equity_curves/
+trade_logs/
+*.png
+*.jpg
+*.pdf
+
+# OS
+Thumbs.db

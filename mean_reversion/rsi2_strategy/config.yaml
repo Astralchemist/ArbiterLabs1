@@ -1,0 +1,35 @@
+parameters:
+  rsi_period: 2
+  equity_oversold: 40
+  equity_overbought: 80
+  bond_oversold: 30
+  bond_overbought: 60
+  allocation_pct: 0.50
+  leverage: 1.00
+
+symbols:
+  equity: 'SPY'
+  bond: 'TLT'
+  benchmark: 'SPY'
+
+backtest:
+  start_date: '2010-01-01'
+  end_date: '2023-12-31'
+  initial_capital: 100000
+
+data:
+  interval: '1d'
+  lookback_days: 30
+
+risk:
+  max_position_size: 0.50
+  max_leverage: 2.0
+  
+execution:
+  slippage: 0.001
+  commission: 0.005
+
+reporting:
+  save_trades: true
+  save_equity_curve: true
+  plot_results: true

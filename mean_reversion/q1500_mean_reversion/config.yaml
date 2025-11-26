@@ -1,0 +1,30 @@
+# Strategy Configuration
+strategy:
+  name: "q1500_mean_reversion"
+  version: "1.0.0"
+
+# Trading Parameters
+parameters:
+  lookback_window: 5
+  long_percentile: 10
+  short_percentile: 90
+  leverage: 1.0
+
+# Risk Management
+risk:
+  max_position_size: 0.01        # 1% per stock (approx 50 stocks long, 50 short)
+  stop_loss_pct: 0.10            # 10% stop loss
+
+# Data Configuration
+data:
+  symbols: ["SPY", "QQQ", "IWM"] # In reality, this needs a universe selector
+  timeframe: "1d"
+  start_date: "2020-01-01"
+  end_date: "2023-12-31"
+  data_source: "yfinance"
+
+# Execution
+execution:
+  broker: "paper"
+  slippage_bps: 5
+  commission_bps: 10

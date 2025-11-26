@@ -1,0 +1,30 @@
+# Strategy Configuration
+strategy:
+  name: "rsi2_spy_tlt_strategy"
+  version: "1.0.0"
+
+# Trading Parameters
+parameters:
+  rsi_period: 2
+  spy_oversold: 40
+  spy_overbought: 80
+  tlt_oversold: 30
+  tlt_overbought: 60
+  allocation_pct: 0.5
+  leverage: 1.0
+
+# Data Configuration
+data:
+  symbols: 
+    equity: "SPY"
+    bond: "TLT"
+  timeframe: "1d"
+  start_date: "2010-01-01"
+  end_date: "2023-12-31"
+  data_source: "yfinance"
+
+# Execution
+execution:
+  broker: "paper"
+  slippage_bps: 5
+  commission_bps: 10
